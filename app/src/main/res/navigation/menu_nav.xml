@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu_nav"
+    app:startDestination="@id/memeFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="be.ehb.androidproject.profileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_ownMemeFragment"
+            app:destination="@id/ownMemeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="be.ehb.androidproject.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memeFragment"
+        android:name="be.ehb.androidproject.memeFragment"
+        android:label="fragment_meme"
+        tools:layout="@layout/fragment_meme" />
+    <fragment
+        android:id="@+id/ownMemeFragment"
+        android:name="be.ehb.androidproject.OwnMemeFragment"
+        android:label="fragment_own_meme"
+        tools:layout="@layout/fragment_own_meme" >
+        <action
+            android:id="@+id/action_ownMemeFragment3_to_newMemeFragment"
+            app:destination="@id/newMemeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newMemeFragment"
+        android:name="be.ehb.androidproject.NewMemeFragment"
+        android:label="fragment_new_meme"
+        tools:layout="@layout/fragment_new_meme" >
+        <action
+            android:id="@+id/action_newMemeFragment_to_ownMemeFragment"
+            app:destination="@id/ownMemeFragment" />
+    </fragment>
+</navigation>
