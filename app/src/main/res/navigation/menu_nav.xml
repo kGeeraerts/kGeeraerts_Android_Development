@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_profileFragment_to_ownMemeFragment"
             app:destination="@id/ownMemeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_likedMemesFragment"
+            app:destination="@id/likedMemesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_commentsFragment"
+            app:destination="@id/commentsFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -49,4 +55,14 @@
             android:id="@+id/action_newMemeFragment_to_ownMemeFragment"
             app:destination="@id/ownMemeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/likedMemesFragment"
+        android:name="be.ehb.androidproject.LikedMemesFragment"
+        android:label="fragment_liked_memes"
+        tools:layout="@layout/fragment_liked_memes" />
+    <fragment
+        android:id="@+id/commentsFragment"
+        android:name="be.ehb.androidproject.CommentsFragment"
+        android:label="fragment_comments"
+        tools:layout="@layout/fragment_comments" />
 </navigation>

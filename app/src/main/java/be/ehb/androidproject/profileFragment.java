@@ -78,6 +78,22 @@ public class profileFragment extends Fragment {
                     }
                 });
 
+        view.findViewById(R.id.likedmemes).setOnClickListener(
+                new View.OnClickListener()
+                {
+                    public void onClick(View view){
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_likedMemesFragment);
+                    }
+                });
+
+        view.findViewById(R.id.comments).setOnClickListener(
+                new View.OnClickListener()
+                {
+                    public void onClick(View view){
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_commentsFragment);
+                    }
+                });
+
         return view;
     }
 }
