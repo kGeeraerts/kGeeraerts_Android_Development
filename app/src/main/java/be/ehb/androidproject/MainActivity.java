@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
+import androidx.room.Room;
 
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import be.ehb.androidproject.entities.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,5 +24,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
 
         NavigationUI.setupWithNavController(bottomMenu, navController);
+
+        Database db = Room.databaseBuilder(getApplicationContext(),Database.class, "database").build();
     }
 }
