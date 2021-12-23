@@ -14,6 +14,7 @@ import be.ehb.androidproject.entities.User;
 
 public class MainActivity extends AppCompatActivity {
 
+    int uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,5 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
 
         NavigationUI.setupWithNavController(bottomMenu, navController);
-
-        Database db = Room.databaseBuilder(getApplicationContext(),Database.class, "database").build();
     }
 }

@@ -1,6 +1,7 @@
 package be.ehb.androidproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,12 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.mindrot.jbcrypt.BCrypt;
+
+import be.ehb.androidproject.entities.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,8 +82,29 @@ public class LoginFragment extends Fragment {
                 new View.OnClickListener()
                 {
                     public void onClick(View view){
-                        Intent intent = new Intent(view.getContext(), MainActivity.class);
-                        startActivity(intent);
+                        EditText username = (EditText) getView().findViewById(R.id.loginUsernameInput);
+                        String name = username.getText().toString();
+                        EditText password = (EditText) getView().findViewById(R.id.loginPasswordInput);
+                        String pw = password.getText().toString();
+
+                        Database db = Database.getInstance(view.getContext());
+                        User user = db.userDao().getUser(name);
+
+                        TextView error = (TextView) getView().findViewById(R.id.loginError);
+
+                        if(user == null){
+                            error.setText("Username is not registered, username is case-sensitive!");
+                        }else if(BCrypt.checkpw(pw, user.getPassword())){
+                            error.setText("");
+                            SharedPreferences sharedPref = getActivity().getSharedPreferences("appPref", view.getContext().MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putInt("uid", user.getUid());
+                            editor.apply();
+                            Intent intent = new Intent(view.getContext(), MainActivity.class);
+                            startActivity(intent);
+                        }else{
+                            error.setText("Wrong password!");
+                        }
                     }
                 });
 

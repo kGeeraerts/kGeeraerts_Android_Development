@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/registerUsernameInput"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -49,7 +49,7 @@
         android:layout_marginTop="50dp"
         android:text="Password:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/registerUsernameInput" />
 
     <TextView
         android:id="@+id/textView15"
@@ -60,10 +60,10 @@
         android:layout_marginRight="50dp"
         android:text="Repeat Password:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/registerUsernameInput" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/registerPasswordInput"
         android:layout_width="107dp"
         android:layout_height="48dp"
         android:layout_marginStart="50dp"
@@ -76,7 +76,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/registerPasswordCheckInput"
         android:layout_width="107dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -109,4 +109,13 @@
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/registerError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordInput" />
 </androidx.constraintlayout.widget.ConstraintLayout>

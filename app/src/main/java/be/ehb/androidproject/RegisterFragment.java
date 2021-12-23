@@ -8,6 +8,12 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.mindrot.jbcrypt.BCrypt;
+
+import be.ehb.androidproject.entities.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,7 +80,28 @@ public class RegisterFragment extends Fragment {
                 new View.OnClickListener()
                 {
                     public void onClick(View view){
-                        Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
+                        EditText username = (EditText) getView().findViewById(R.id.registerUsernameInput);
+                        String name = username.getText().toString();
+                        EditText password = (EditText) getView().findViewById(R.id.registerPasswordInput);
+                        String pw = password.getText().toString();
+                        EditText passwordcheck = (EditText) getView().findViewById(R.id.registerPasswordCheckInput);
+                        String pwcheck = passwordcheck.getText().toString();
+
+                        Database db = Database.getInstance(view.getContext());
+
+                        TextView error = (TextView) getView().findViewById(R.id.registerError);
+
+                        if(name.matches("") || pw.matches("") || pwcheck.matches("")){
+                            error.setText("All fields must be entered!");
+                        }else if(!pw.matches(pwcheck)){
+                            error.setText("Both passwords fields must be same!");
+                        }else if(db.userDao().getUser(name) != null){
+                            error.setText("This username is already used!");
+                        }else{
+                            User newUser = new User(name, BCrypt.hashpw(pw, BCrypt.gensalt()));
+                            db.userDao().insertUser(newUser);
+                            Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
+                        }
                     }
                 });
 

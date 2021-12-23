@@ -2,6 +2,7 @@ package be.ehb.androidproject.DAO;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
@@ -15,11 +16,14 @@ import be.ehb.androidproject.entities.relations.UserWithMemes;
 @Dao
 public interface UserDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertUser(User user);
 
     @Query("SELECT * FROM User WHERE uid = :uid")
     public User getUser(int uid);
+
+    @Query("SELECT * FROM User WHERE username = :username")
+    public User getUser(String username);
 
     @Transaction
     @Query("SELECT * FROM User")

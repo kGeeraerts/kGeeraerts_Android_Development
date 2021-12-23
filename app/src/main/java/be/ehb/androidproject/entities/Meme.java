@@ -17,4 +17,42 @@ public class Meme {
 
     @ColumnInfo(name = "creator")
     public int creator;
+
+    public Meme(String title, byte[] image, int creator) {
+        this.title = title;
+        this.image = image;
+        this.creator = creator;
+    }
+
+    public int getMemeid() {
+        return memeid;
+    }
+
+    public void setMemeid(int memeid) {
+        this.memeid = memeid;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public int getCreator() {
+        return creator;
+    }
+
+    public void setCreator(int creator) {
+        this.creator = creator;
+    }
 }
