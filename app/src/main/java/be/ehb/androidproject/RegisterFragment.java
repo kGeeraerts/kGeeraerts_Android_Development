@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link profileFragment#newInstance} factory method to
+ * Use the {@link RegisterFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class profileFragment extends Fragment {
+public class RegisterFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +25,7 @@ public class profileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public profileFragment() {
+    public RegisterFragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +35,11 @@ public class profileFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment profileFragment.
+     * @return A new instance of fragment RegisterFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static profileFragment newInstance(String param1, String param2) {
-        profileFragment fragment = new profileFragment();
+    public static RegisterFragment newInstance(String param1, String param2) {
+        RegisterFragment fragment = new RegisterFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,45 +60,21 @@ public class profileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_register, container, false);
 
-        view.findViewById(R.id.edit).setOnClickListener(
+        view.findViewById(R.id.toLogin).setOnClickListener(
                 new View.OnClickListener()
                 {
                     public void onClick(View view){
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_editProfileFragment);
+                        Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
                     }
                 });
 
-        view.findViewById(R.id.own).setOnClickListener(
+        view.findViewById(R.id.register).setOnClickListener(
                 new View.OnClickListener()
                 {
                     public void onClick(View view){
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_ownMemeFragment);
-                    }
-                });
-
-        view.findViewById(R.id.likedmemes).setOnClickListener(
-                new View.OnClickListener()
-                {
-                    public void onClick(View view){
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_likedMemesFragment);
-                    }
-                });
-
-        view.findViewById(R.id.comments).setOnClickListener(
-                new View.OnClickListener()
-                {
-                    public void onClick(View view){
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_commentsFragment);
-                    }
-                });
-
-        view.findViewById(R.id.logout).setOnClickListener(
-                new View.OnClickListener()
-                {
-                    public void onClick(View view){
-                        getActivity().finish();
+                        Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
                     }
                 });
 
