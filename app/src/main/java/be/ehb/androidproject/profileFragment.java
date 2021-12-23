@@ -9,6 +9,12 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.List;
+
+import be.ehb.androidproject.entities.Meme;
+import be.ehb.androidproject.entities.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,6 +71,18 @@ public class profileFragment extends Fragment {
         SharedPreferences sharedPref = getActivity().getSharedPreferences("appPref", view.getContext().MODE_PRIVATE);
         int uid = sharedPref.getInt("uid", -1);
         System.out.println(uid);
+        Database db = Database.getInstance(view.getContext());
+        User user = db.userDao().getUser(uid);
+        List<Meme> memes = db.userDao().getUserWithMemes(user.getUid()).get(0).memes;
+        List<Meme> likes = db.userDao().getUserWithLikes(user.getUid()).get(0).memes;
+
+        TextView username = view.findViewById(R.id.profileUsername);
+        username.setText(user.getUserName());
+        TextView memeAmount = view.findViewById(R.id.profileMemeAmount);
+        memeAmount.setText(String.valueOf(memes.size()));
+        TextView likeAmount = view.findViewById(R.id.profileLikesAmount);
+        likeAmount.setText(String.valueOf(likes.size()));
+
 
         view.findViewById(R.id.edit).setOnClickListener(
                 new View.OnClickListener()

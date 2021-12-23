@@ -5,6 +5,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -26,14 +27,17 @@ public interface UserDao {
     public User getUser(String username);
 
     @Transaction
-    @Query("SELECT * FROM User")
-    public List<UserWithMemes> getUserWithMemes();
+    @Query("SELECT * FROM User WHERE uid = :uid")
+    public List<UserWithMemes> getUserWithMemes(int uid);
 
     @Transaction
-    @Query("SELECT * FROM User")
-    public List<UserWithLikes> getUserWithLikes();
+    @Query("SELECT * FROM User WHERE uid = :uid")
+    public List<UserWithLikes> getUserWithLikes(int uid);
 
     @Transaction
     @Query("SELECT * FROM User")
     public List<UserWithComments> getUserWithComments();
+
+    @Query("UPDATE user SET password = :pw WHERE uid = :uid")
+    public void updatepw(String pw, int uid);
 }
