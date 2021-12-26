@@ -47,8 +47,8 @@ public abstract class Database extends RoomDatabase {
 
                             @Override
                             public void run() {
-                                User user1 = new User("StartUser", "12345");
-                                User user2 = new User("SupportingCast", "12345");
+                                User user1 = new User("StartUser", BCrypt.hashpw("12345", BCrypt.gensalt()));
+                                User user2 = new User("SupportingCast", BCrypt.hashpw("12345", BCrypt.gensalt()));
                                 getInstance(context).userDao().insertUser(user1);
                                 getInstance(context).userDao().insertUser(user2);
                             }
