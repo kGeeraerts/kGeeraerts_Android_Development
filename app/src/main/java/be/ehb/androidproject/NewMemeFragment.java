@@ -1,5 +1,8 @@
 package be.ehb.androidproject;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +11,13 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
+
+import be.ehb.androidproject.entities.Meme;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,16 +66,25 @@ public class NewMemeFragment extends Fragment {
         }
     }
 
+    public MainActivity activity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_new_meme, container, false);
+        activity = (MainActivity) getActivity();
+
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("appPref", view.getContext().MODE_PRIVATE);
+        int uid = sharedPref.getInt("uid", -1);
+
+        ImageView meme = (ImageView) view.findViewById(R.id.newMemeImageDisplay);
+        meme.setImageBitmap(activity.newMemeImage);
 
         view.findViewById(R.id.cancelsavememe).setOnClickListener(
                 new View.OnClickListener()
                 {
                     public void onClick(View view){
+                        activity.newMemeImage = null;
                         Navigation.findNavController(view).navigate(R.id.action_newMemeFragment_to_ownMemeFragment);
                     }
                 });
@@ -74,10 +93,57 @@ public class NewMemeFragment extends Fragment {
                 new View.OnClickListener()
                 {
                     public void onClick(View view){
-                        Navigation.findNavController(view).navigate(R.id.action_newMemeFragment_to_ownMemeFragment);
+                        EditText titleText = (EditText) getView().findViewById(R.id.newMemetitleInput);
+                        String title = titleText.getText().toString();
+
+                        TextView error = (TextView) getView().findViewById(R.id.newMemeErrorMessage);
+
+                        Database db = Database.getInstance(view.getContext());
+
+                        if(title.matches("")){
+                            error.setText("The meme needs a title!");
+                        }else if(activity.newMemeImage == null){
+                            error.setText("Please select a meme to upload!");
+                        }else{
+                            Bitmap img = activity.newMemeImage;
+                            activity.newMemeImage = null;
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            img.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                            byte[] byteArray = stream.toByteArray();
+
+                            Meme newMeme = new Meme(title, byteArray, uid);
+
+                            db.memeDao().insertMeme(newMeme);
+                            Navigation.findNavController(view).navigate(R.id.action_newMemeFragment_to_ownMemeFragment);
+                        }
+                    }
+                });
+
+        view.findViewById(R.id.newMemePictureInput).setOnClickListener(
+                new View.OnClickListener()
+                {
+                    public void onClick(View view){
+                        Intent gallery = new Intent();
+                        gallery.setType("image/*");
+                        gallery.setAction(Intent.ACTION_GET_CONTENT);
+
+                        getActivity().startActivityForResult(Intent.createChooser(gallery, "Select Image"), 1);
+                        System.out.println(activity.newMemeImage);
+                    }
+                });
+
+        view.findViewById(R.id.reloadNewMeme).setOnClickListener(
+                new View.OnClickListener()
+                {
+                    public void onClick(View view){
+                        ImageView img = getView().findViewById(R.id.newMemeImageDisplay);
+                        img.setImageBitmap(activity.newMemeImage);
+
+                        System.out.println("Image displayed");
                     }
                 });
 
         return view;
     }
+
 }

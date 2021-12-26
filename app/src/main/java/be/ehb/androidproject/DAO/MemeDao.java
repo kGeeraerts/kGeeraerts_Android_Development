@@ -16,7 +16,7 @@ import be.ehb.androidproject.entities.relations.MemeWithLikes;
 public interface MemeDao {
 
     @Insert
-    void insertUser(Meme meme);
+    void insertMeme(Meme meme);
 
     @Query("SELECT * FROM Meme WHERE memeid = :memeid")
     public Meme getMeme(int memeid);

@@ -15,7 +15,7 @@ import be.ehb.androidproject.entities.Meme;
 import be.ehb.androidproject.entities.User;
 import be.ehb.androidproject.entities.relations.UserMemeLikes;
 
-@androidx.room.Database(entities = {User.class, Meme.class, Comment.class, UserMemeLikes.class}, version = 2)
+@androidx.room.Database(entities = {User.class, Meme.class, Comment.class, UserMemeLikes.class}, version = 3)
 public abstract class Database extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract MemeDao memeDao();

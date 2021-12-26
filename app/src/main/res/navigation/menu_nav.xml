@@ -36,7 +36,11 @@
         android:id="@+id/memeFragment"
         android:name="be.ehb.androidproject.memeFragment"
         android:label="fragment_meme"
-        tools:layout="@layout/fragment_meme" />
+        tools:layout="@layout/fragment_meme" >
+        <action
+            android:id="@+id/action_memeFragment_to_memeCommentsFragment"
+            app:destination="@id/memeCommentsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ownMemeFragment"
         android:name="be.ehb.androidproject.OwnMemeFragment"
@@ -45,6 +49,9 @@
         <action
             android:id="@+id/action_ownMemeFragment3_to_newMemeFragment"
             app:destination="@id/newMemeFragment" />
+        <action
+            android:id="@+id/action_ownMemeFragment_to_memeCommentsFragment"
+            app:destination="@id/memeCommentsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newMemeFragment"
@@ -65,4 +72,9 @@
         android:name="be.ehb.androidproject.CommentsFragment"
         android:label="fragment_comments"
         tools:layout="@layout/fragment_comments" />
+    <fragment
+        android:id="@+id/memeCommentsFragment"
+        android:name="be.ehb.androidproject.memeCommentsFragment"
+        android:label="fragment_meme_comments"
+        tools:layout="@layout/fragment_meme_comments" />
 </navigation>

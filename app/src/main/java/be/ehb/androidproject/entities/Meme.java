@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Meme {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int memeid;
 
     @ColumnInfo(name = "title")
