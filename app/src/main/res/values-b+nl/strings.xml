@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Android Project</string>
+    <string name="save_button">Opslaan</string>
+    <string name="cancel_button">Annuleer</string>
+    <string name="old_password">Oud paswoord:</string>
+    <string name="new_password">Nieuw paswoord:</string>
+    <string name="new_password_repeat">Herhaal nieuw paswoord:</string>
+    <string name="username">Gebruikersnaam:</string>
+    <string name="password">Paswoord:</string>
+    <string name="repeat_password">Herhaal Paswoord:</string>
+    <string name="login_title">Login</string>
+    <string name="register_button">Registreer</string>
+    <string name="login_button">Login</string>
+    <string name="add_button">Voeg toe</string>
+    <string name="add_comment">Commentaar:</string>
+    <string name="save_meme">Sla op</string>
+    <string name="meme_title">Meme Titel:</string>
+    <string name="get_image_button">Krijg foto van gallerij</string>
+    <string name="get_image_content_desc">Foto tonen</string>
+    <string name="add_meme">Voeg toe</string>
+    <string name="edit_profile_button">Pas aan</string>
+    <string name="own_memes_button">Eigen Memes</string>
+    <string name="meme_amount">Hoeveelheid memes:</string>
+    <string name="like_amount">Likes:</string>
+    <string name="logout_button">Logout</string>
+    <string name="liked_memes_button">Gelikete Memes</string>
+    <string name="comments_button">Commentaren</string>
+    <string name="register_title">Registreer</string>
+    <string name="like_button">Vind leuk</string>
+    <string name="remove_button">Verwijder</string>
+</resources>
