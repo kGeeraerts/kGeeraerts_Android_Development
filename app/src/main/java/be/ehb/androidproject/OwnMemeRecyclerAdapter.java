@@ -47,6 +47,12 @@ public class OwnMemeRecyclerAdapter extends RecyclerView.Adapter<OwnMemeRecycler
         Bitmap image = BitmapFactory.decodeByteArray(list.get(position).image, 0, list.get(position).image.length);
         img.setImageBitmap(image);
 
+        TextView like = (TextView) holder.VersionName.findViewById(R.id.ownMemeLikes);
+        Database db = Database.getInstance(holder.VersionName.getContext());
+        int amount = db.memeDao().getMemeWithLikes(list.get(position).getMemeid()).get(0).users.size();
+        String likes = Integer.toString(amount);
+        like.setText("Likes: " + likes);
+
         holder.meme = list.get(position);
     }
 

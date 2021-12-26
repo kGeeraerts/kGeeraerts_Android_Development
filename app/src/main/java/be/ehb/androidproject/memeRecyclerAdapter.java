@@ -1,5 +1,6 @@
 package be.ehb.androidproject;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -44,6 +45,12 @@ public class memeRecyclerAdapter extends RecyclerView.Adapter<memeRecyclerAdapte
     public void onBindViewHolder(@NonNull memeRecyclerAdapter.MyViewHolder holder, int position) {
         TextView title = (TextView) holder.VersionName.findViewById(R.id.memeTitle);
         title.setText(list.get(position).title);
+
+        TextView like = (TextView) holder.VersionName.findViewById(R.id.memeLikes);
+        Database db = Database.getInstance(holder.VersionName.getContext());
+        int amount = db.memeDao().getMemeWithLikes(list.get(position).getMemeid()).get(0).users.size();
+        String likes = Integer.toString(amount);
+        like.setText("Likes: " + likes);
 
         ImageView img = (ImageView) holder.VersionName.findViewById(R.id.memeImage);
         Bitmap image = BitmapFactory.decodeByteArray(list.get(position).image, 0, list.get(position).image.length);

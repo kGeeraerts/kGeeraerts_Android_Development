@@ -1,12 +1,19 @@
 package be.ehb.androidproject;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.List;
+
+import be.ehb.androidproject.entities.Meme;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +66,19 @@ public class LikedMemesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_liked_memes, container, false);
+        View view = inflater.inflate(R.layout.fragment_liked_memes, container, false);
+
+        Database db = Database.getInstance(view.getContext());
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("appPref", view.getContext().MODE_PRIVATE);
+        int uid = sharedPref.getInt("uid", -1);
+        List<Meme> memes = db.userDao().getUserWithLikes(uid).get(0).memes;
+
+        RecyclerView recycle  = (RecyclerView) view.findViewById(R.id.likeMemeRecycler);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getContext());
+        recycle.setLayoutManager(layoutManager);
+        memeRecyclerAdapter adapter = new memeRecyclerAdapter(memes, uid);
+        recycle.setAdapter(adapter);
+
+        return view;
     }
 }

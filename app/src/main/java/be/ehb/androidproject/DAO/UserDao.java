@@ -35,8 +35,8 @@ public interface UserDao {
     public List<UserWithLikes> getUserWithLikes(int uid);
 
     @Transaction
-    @Query("SELECT * FROM User")
-    public List<UserWithComments> getUserWithComments();
+    @Query("SELECT * FROM User WHERE uid = :uid")
+    public List<UserWithComments> getUserWithComments(int uid);
 
     @Query("UPDATE user SET password = :pw WHERE uid = :uid")
     public void updatepw(String pw, int uid);

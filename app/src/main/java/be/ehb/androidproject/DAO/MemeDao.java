@@ -31,10 +31,10 @@ public interface MemeDao {
     public List<Meme> getAllMemes();
 
     @Transaction
-    @Query("SELECT * FROM Meme")
-    public List<MemeWithLikes> getMemeWithLikes();
+    @Query("SELECT * FROM Meme WHERE memeid = :memeid")
+    public List<MemeWithLikes> getMemeWithLikes(int memeid);
 
     @Transaction
-    @Query("SELECT * FROM Meme")
-    public List<MemeWithComments> getMemeWithComments();
+    @Query("SELECT * FROM Meme WHERE memeid = :memeid")
+    public List<MemeWithComments> getMemeWithComments(int memeid);
 }

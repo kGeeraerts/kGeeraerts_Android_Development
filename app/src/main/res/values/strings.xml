@@ -1,5 +1,31 @@
 <resources>
     <string name="app_name">Android Project</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="old_password">Old password:</string>
+    <string name="new_password">New password:</string>
+    <string name="new_password_repeat">Repeat new password:</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="repeat_password">Repeat Password:</string>
+    <string name="login_title">Login</string>
+    <string name="register_button">Register</string>
+    <string name="login_button">Login</string>
+    <string name="add_button">Add</string>
+    <string name="add_comment">Add comment:</string>
+    <string name="save_meme">Save meme</string>
+    <string name="meme_title">Meme title:</string>
+    <string name="get_image_button">Get Image from Gallery</string>
+    <string name="get_image_content_desc">Image display</string>
+    <string name="add_meme">Add Meme</string>
+    <string name="edit_profile_button">Edit Profile</string>
+    <string name="own_memes_button">Own Memes</string>
+    <string name="meme_amount">Amount of memes:</string>
+    <string name="like_amount">Likes:</string>
+    <string name="logout_button">Logout</string>
+    <string name="liked_memes_button">Liked Memes</string>
+    <string name="comments_button">Comments</string>
+    <string name="register_title">Register</string>
+    <string name="like_button">Like</string>
+    <string name="remove_button">Remove</string>
 </resources>

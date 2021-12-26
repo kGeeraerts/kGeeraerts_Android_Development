@@ -14,7 +14,7 @@
         android:layout_marginTop="250dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:text="Save Meme"
+        android:text="@string/save_meme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newMemeError" />
 
@@ -25,7 +25,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="250dp"
-        android:text="Cancel"
+        android:text="@string/cancel_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newMemeError" />
 
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Meme Title:"
+        android:text="@string/meme_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +49,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/newMemePictureInput"
@@ -58,7 +59,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="25dp"
-        android:text="Get Image from Gallery"
+        android:text="@string/get_image_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newMemetitleInput" />
 
@@ -76,6 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:contentDescription="@string/get_image_content_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/newMemeError" />
@@ -87,12 +89,12 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:maxHeight="200dp"
         android:maxWidth="180dp"
+        android:maxHeight="200dp"
         android:src="@android:drawable/ic_popup_sync"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newMemetitleInput"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/newMemeErrorMessage"

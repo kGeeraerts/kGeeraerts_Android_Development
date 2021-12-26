@@ -14,7 +14,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="300dp"
-        android:text="Edit Profile"
+        android:text="@string/edit_profile_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:layout_marginTop="300dp"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
-        android:text="Own memes"
+        android:text="@string/own_memes_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +36,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="34dp"
-        android:text="Username:"
+        android:text="@string/username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,6 +59,7 @@
         android:layout_marginTop="34dp"
         app:layout_constraintStart_toEndOf="@+id/profileMemeAmount"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
         tools:src="@tools:sample/avatars" />
 
     <TextView
@@ -68,7 +69,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="30dp"
-        android:text="Amount of memes:"
+        android:text="@string/meme_amount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -89,7 +90,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="30dp"
-        android:text="Likes: "
+        android:text="@string/like_amount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -108,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Logout"
+        android:text="@string/logout_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +122,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="30dp"
-        android:text="Liked memes"
+        android:text="@string/liked_memes_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit" />
 
@@ -132,7 +133,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
-        android:text="Comments"
+        android:text="@string/comments_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/own" />
 </androidx.constraintlayout.widget.ConstraintLayout>

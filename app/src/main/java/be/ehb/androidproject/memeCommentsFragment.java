@@ -1,12 +1,20 @@
 package be.ehb.androidproject;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+
+import java.util.List;
+
+import be.ehb.androidproject.entities.Comment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,7 +54,7 @@ public class memeCommentsFragment extends Fragment {
         return fragment;
     }
 
-    private int memeid = -1;
+    public int memeid = -1;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +63,8 @@ public class memeCommentsFragment extends Fragment {
         }
     }
 
+
+    public MainActivity activity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,6 +72,35 @@ public class memeCommentsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_meme_comments, container, false);
         System.out.println("Comments opened");
         System.out.println(memeid);
+
+        activity = (MainActivity) getActivity();
+
+        Database db = Database.getInstance(view.getContext());
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("appPref", view.getContext().MODE_PRIVATE);
+        int uid = sharedPref.getInt("uid", -1);
+        List<Comment> comments = db.memeDao().getMemeWithComments(memeid).get(0).comments;
+
+        RecyclerView recycle  = (RecyclerView) view.findViewById(R.id.memeCommentsRecycler);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getContext());
+        recycle.setLayoutManager(layoutManager);
+        commentRecyclerAdapter adapter = new commentRecyclerAdapter(comments);
+        recycle.setAdapter(adapter);
+
+        view.findViewById(R.id.addNewComment).setOnClickListener(
+                new View.OnClickListener()
+                {
+                    public void onClick(View view){
+                        EditText newComment = (EditText) getView().findViewById(R.id.newCommentInput);
+                        String comment = newComment.getText().toString();
+
+                        if(comment.matches("")){
+                        }else {
+                            Comment com = new Comment(comment, memeid, uid);
+                            db.commentDao().insertComment(com);
+                            activity.reloadComments(memeid);
+                        }
+                    }
+                });
 
         return view;
     }

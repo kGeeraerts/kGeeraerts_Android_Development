@@ -52,4 +52,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void reloadComments(int memeid) {
+        System.out.println("Comment added");
+        memeCommentsFragment mcf = new memeCommentsFragment();
+        mcf.memeid = memeid;
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainerView, mcf)
+                .commit();
+    }
 }
